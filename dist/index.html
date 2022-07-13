@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
-<script defer src="main.js"></script></head>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/efb11c3b99.js" crossorigin="anonymous"></script>
+
+<script defer src="runtime.js"></script><script defer src="main.js"></script></head>
+
 <body>
-    <h1 class="hello">Hello webpack!</h1>
+    <div class="toDo-app">
+        <div class="toDo-head">
+            <h1>Today's To Do</h1>
+            <button type="button"><i class="fa-solid fa-rotate"></i></button>
+        </div>
+        <hr>
+        <form>
+            <input class="input-task" type="text" placeholder="Add to your list..." required>
+            <button type="button"><i class="fa-solid fa-right-to-bracket"></i></button>
+        </form>
+        <hr>
+        <ul id="to-do-list">
+            <!--TASKS ELEMENTS DINAMICALLY INSERTED WITH JAVASCRIPT-->
+        </ul>
+        <hr>
+        <button type="button" class="clear-btn">Clear all completed</button>
+    </div>
+    
+    
 </body>
 </html>

@@ -1,3 +1,93 @@
-.hello {
-  color: red;
+body {
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vw;
+}
+
+hr {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  margin: 0;
+}
+
+button {
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: grey;
+  cursor: pointer;
+}
+
+.toDo-app {
+  width: 500px;
+  box-shadow: 3px 5px 20px 3px lightgrey;
+}
+
+.toDo-head {
+  padding: 1.2em;
+  display: flex;
+  align-items: stretch;
+}
+
+h1 {
+  font-size: 15px;
+  flex: 1;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 1.2em;
+  width: calc(100% - 2.4em);
+}
+
+.input-task {
+  border: none;
+  font-size: 1em;
+  font-style: italic;
+  flex: 1;
+}
+
+#to-do-list {
+  padding: 0%;
+  margin: 0%;
+}
+
+.task-item {
+  width: calc(100% - 20px - 1.2em);
+  padding: 1.2em;
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+}
+
+label {
+  padding-left: 10px;
+  flex: 1;
+}
+
+.move-btn {
+  cursor: move;
+  font-size: 1em;
+}
+
+.clear-btn {
+  border: none;
+  background: #f6f6f6;
+  color: grey;
+  text-decoration: none;
+  font-size: 1em;
+  width: calc(100% - 20px - 1.2em);
+  padding: 1.2em;
+  position: relative;
+  right: 0;
+}
+
+.clear-btn:hover {
+  color: black;
+  text-decoration: underline;
 }
