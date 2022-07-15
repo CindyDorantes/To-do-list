@@ -1,6 +1,19 @@
 import './style.css';
+import Task from './modules/class-task.js';
 
 const toDoContainer = document.getElementById('to-do-list');
+// para agregar un elemento, debemos empezar por agregarle acción al boton de agregar
+const btnAdd = document.getElementById('btn-add');
+//aqui vamos a ir almacenando las tareas
+const taskList = [];
+
+btnAdd.addEventListener('click', () => {
+  const inputTask = document.querySelector('.input-task').value;
+  const newTask = new Task(inputTask);
+  newTask.addTask(taskList);
+  newTask.displayTask(taskList);
+})
+
 
 const tasks = [
   {

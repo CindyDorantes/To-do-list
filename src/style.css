@@ -4,7 +4,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vw;
 }
 
 hr {
@@ -19,6 +18,10 @@ button {
   text-decoration: none;
   color: grey;
   cursor: pointer;
+}
+
+input[type=text]:focus {
+  outline: none !important;
 }
 
 .toDo-app {
@@ -65,14 +68,39 @@ form {
   align-items: stretch;
 }
 
+.task-item.onfocus {
+  background-color: LemonChiffon;
+}
+
 label {
   padding-left: 10px;
   flex: 1;
 }
 
+.description {
+  padding-left: 10px;
+  flex: 1;
+  border: none;
+  font-size: 1em;
+  background-color: inherit;
+}
+
 .move-btn {
   cursor: move;
   font-size: 1em;
+}
+
+.move-btn.hide {
+  display: none;
+}
+
+.delete-btn {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.delete-btn.hide{
+  display: none;
 }
 
 .clear-btn {
