@@ -1,4 +1,3 @@
-
 const toDoContainer = document.getElementById('to-do-list');
 
 export default class {
@@ -10,6 +9,7 @@ export default class {
 
   addTask(taskList) {
     taskList.push(this);
+    this.index = taskList.length;
   }
 
   displayTask(taskList) {
@@ -44,18 +44,27 @@ export default class {
       taskItem.classList.add('onfocus');
       taskDelete.classList.remove('hide');
       taskMove.classList.add('hide');
-    })
+    });
 
-    taskDelete.addEventListener('click', () => {
-      taskItem.remove();
-      lineHr.remove();
-    })
+    taskDescription.addEventListener('change', () => {
+      this.description = taskDescription.value;
+    });
 
     document.body.addEventListener('click', () => {
       taskItem.classList.remove('onfocus');
       taskDelete.classList.add('hide');
       taskMove.classList.remove('hide');
-    }, true); 
+    }, true);
 
+    taskDelete.addEventListener('click', () => {
+      taskList = taskList.filter((x) => (x.description !== this.description));
+      for (let i = 0; i < taskList.length; i += 1) {
+        taskList[i].index = i + 1;
+      }
+      taskItem.remove();
+      lineHr.remove();
+
+      localStorage.setItem('taskList', JSON.stringify(taskList));
+    });
   }
 }

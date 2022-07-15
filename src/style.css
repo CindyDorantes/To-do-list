@@ -69,7 +69,7 @@ form {
 }
 
 .task-item.onfocus {
-  background-color: LemonChiffon;
+  background-color: lemonchiffon;
 }
 
 label {
@@ -99,7 +99,7 @@ label {
   font-size: 1em;
 }
 
-.delete-btn.hide{
+.delete-btn.hide {
   display: none;
 }
 
