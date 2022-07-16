@@ -21,7 +21,7 @@ export default class {
     taskCheck.type = 'checkbox';
     taskItem.appendChild(taskCheck);
     if (this.completed === true) {
-      taskCheck.checked = true
+      taskCheck.checked = true;
     }
 
     const taskDescription = document.createElement('input');
@@ -43,7 +43,7 @@ export default class {
     const lineHr = document.createElement('hr');
     toDoContainer.appendChild(lineHr);
 
-    // modify key 'completed' whenever the checkbox changes
+    // MODIFY KEY 'COMPLETED' WHENEVER THE CHECKBOX CHANGES
     taskCheck.addEventListener('change', () => {
       if (taskCheck.checked === true) {
         taskCheck.classList.add('checked');
@@ -52,33 +52,56 @@ export default class {
         taskCheck.classList.remove('checked');
         this.completed = false;
       }
-      console.log(this);
-      console.log(taskList);      
+
+      // first I need to save in 'taskList' what is in the localstorage
+      taskList = JSON.parse(localStorage.getItem('taskList'));
+
+      // then, I look for the item that matches the 'description'
+      for (let i = 0; i < taskList.length; i += 1) {
+        // if the description matches, update the 'completed' property
+        if (taskList[i].description === this.description) {
+          taskList[i].completed = this.completed;
+        }
+      }
+
+      // I save the updated 'taskList' back to the localStorage
+      localStorage.setItem('taskList', JSON.stringify(taskList));
     });
 
-    // modify the task container style when the taks is being modified
+    // MODIFY THE TASK CONTAINER STYLE WHEN THE TAKS IS BEING MODIFIED
     taskDescription.addEventListener('click', () => {
       taskItem.classList.add('onfocus');
       taskDelete.classList.remove('hide');
       taskMove.classList.add('hide');
     });
 
-    // update the key 'description' whenever the input text is modified
+    // UPDATE THE KEY 'DESCRIPTION' WHENEVER THE INPUT TEXT IS MODIFIED
     taskDescription.addEventListener('change', () => {
-      this.description = taskDescription.value;
+      // first I need to save in 'taskList' what is in the localstorage
+      taskList = JSON.parse(localStorage.getItem('taskList'));
+
+      // then, I look for the item that matches the initial description
+      for (let i = 0; i < taskList.length; i += 1) {
+        // if the description matches, update the 'description' property
+        if (taskList[i].description === this.description) {
+          taskList[i].description = taskDescription.value;
+        }
+      }
+
+      // save the updated 'taskList' back to the localStorage
       localStorage.setItem('taskList', JSON.stringify(taskList));
     });
 
-    // return the task container style to normal when the taks is not being modified anymore
+    // RETURN THE TASK CONTAINER STYLE TO NORMAL WHEN THE TAKS IS NOT BEING MODIFIED ANYMORE
     document.body.addEventListener('click', () => {
       taskItem.classList.remove('onfocus');
       taskDelete.classList.add('hide');
       taskMove.classList.remove('hide');
     }, true);
 
-    // Event for deleting a task, whenever the button remove is cliked
+    // EVENT FOR DELETING A TASK, WHENEVER THE BUTTON REMOVE IS CLICKED
     taskDelete.addEventListener('click', () => {
-      let taskList = JSON.parse(localStorage.getItem('taskList'))
+      let taskList = JSON.parse(localStorage.getItem('taskList'));
       taskList = taskList.filter((x) => (x.description !== this.description));
       for (let i = 0; i < taskList.length; i += 1) {
         taskList[i].index = i + 1;
