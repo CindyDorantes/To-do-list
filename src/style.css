@@ -85,6 +85,11 @@ label {
   background-color: inherit;
 }
 
+.description.checked {
+  text-decoration: line-through;
+  color: grey;
+}
+
 .move-btn {
   cursor: move;
   font-size: 1em;
@@ -118,4 +123,8 @@ label {
 .clear-btn:hover {
   color: black;
   text-decoration: underline;
+}
+
+input[type='checkbox']:checked + .description {
+  text-decoration: line-through;
 }
