@@ -18,7 +18,7 @@ export default class {
     toDoContainer.appendChild(taskItem);
 
     const taskCheck = document.createElement('input');
-    taskCheck.setAttribute('type', 'checkbox');
+    taskCheck.type = 'checkbox';
     taskItem.appendChild(taskCheck);
 
     const taskDescription = document.createElement('input');
@@ -40,22 +40,38 @@ export default class {
     const lineHr = document.createElement('hr');
     toDoContainer.appendChild(lineHr);
 
+    // modify key 'completed' whenever the checkbox changes
+    taskCheck.addEventListener('change', () => {
+      if (taskCheck.checked === true) {
+        taskCheck.classList.add('checked');
+        this.completed = true;
+      } else {
+        taskCheck.classList.remove('checked');
+        this.completed = false;
+      }
+    });
+
+    // modify the task container style when the taks is being modified
     taskDescription.addEventListener('click', () => {
       taskItem.classList.add('onfocus');
       taskDelete.classList.remove('hide');
       taskMove.classList.add('hide');
     });
 
+    // update the key 'description' whenever the input text is modified
     taskDescription.addEventListener('change', () => {
       this.description = taskDescription.value;
+      localStorage.setItem('taskList', JSON.stringify(taskList));
     });
 
+    // return the task container style to normal when the taks is not being modified anymore
     document.body.addEventListener('click', () => {
       taskItem.classList.remove('onfocus');
       taskDelete.classList.add('hide');
       taskMove.classList.remove('hide');
     }, true);
 
+    // Event for deleting a task, whenever the button remove is cliked
     taskDelete.addEventListener('click', () => {
       taskList = taskList.filter((x) => (x.description !== this.description));
       for (let i = 0; i < taskList.length; i += 1) {
