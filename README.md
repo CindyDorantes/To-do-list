@@ -14,11 +14,16 @@
 
 ## GETTING STARTED
 
-copy this repo : https://github.com/CindyDorantes/To-do-list.git
+Clone this repo : https://github.com/CindyDorantes/To-do-list.git
 
-cd to the folder name.
+After cloning this project, run the following commands:
 
-right click on the HTML file and open it in the browser.
+```markdown
+npm install
+npm start
+```
+
+The `npm install` command installs all dependencies used in the project while `npm start` is used to start the development server and view the application on the browser.
 
 ## Built With
 
