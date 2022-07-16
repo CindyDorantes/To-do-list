@@ -20,6 +20,9 @@ export default class {
     const taskCheck = document.createElement('input');
     taskCheck.type = 'checkbox';
     taskItem.appendChild(taskCheck);
+    if (this.completed === true) {
+      taskCheck.checked = true
+    }
 
     const taskDescription = document.createElement('input');
     taskDescription.setAttribute('type', 'text');
@@ -49,6 +52,8 @@ export default class {
         taskCheck.classList.remove('checked');
         this.completed = false;
       }
+      console.log(this);
+      console.log(taskList);      
     });
 
     // modify the task container style when the taks is being modified
@@ -73,6 +78,7 @@ export default class {
 
     // Event for deleting a task, whenever the button remove is cliked
     taskDelete.addEventListener('click', () => {
+      let taskList = JSON.parse(localStorage.getItem('taskList'))
       taskList = taskList.filter((x) => (x.description !== this.description));
       for (let i = 0; i < taskList.length; i += 1) {
         taskList[i].index = i + 1;

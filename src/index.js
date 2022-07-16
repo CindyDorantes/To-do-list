@@ -12,6 +12,9 @@ btnAdd.addEventListener('click', () => {
   const inputTask = document.querySelector('.input-task').value;
   const newTask = new Task(inputTask);
 
+  if (localStorage.getItem('taskList')) {
+    taskList = JSON.parse(localStorage.getItem('taskList'))
+  }
   newTask.addTask(taskList);
   newTask.displayTask(taskList);
 
@@ -27,3 +30,13 @@ btnClearAll.addEventListener('click', () => {
   }
   localStorage.setItem('taskList', JSON.stringify(taskList));
 });
+
+if (localStorage.getItem('taskList')) {
+  taskList = JSON.parse(localStorage.getItem('taskList'));
+  for (let i = 0; i < taskList.length; i += 1) {
+    const newTask = new Task(taskList[i].description, taskList[i].completed, taskList[i].index);
+    newTask.displayTask(taskList);
+  }
+}
+
+//window.addEventListener('click', () => console.log(taskList));
